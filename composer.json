@@ -1,0 +1,13 @@
+{
+  "name": "constlab/wordpress-importer",
+  "type": "wordpress-importer",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "Ivan Kalinichenko",
+      "email": "kalinichenko@constlab.ru"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}
