@@ -635,6 +635,22 @@ if ( class_exists( 'WP_Importer' ) ) {
 		}
 
 		/**
+         * Check for post exists by post name
+         *
+		 * @param array $post
+		 *
+		 * @return int
+		 */
+		function is_post_exists( $post ) {
+			global $wpdb;
+
+			$select      = $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_name= '%s'", $post['post_name'] );
+			$post_exists = $wpdb->get_row( $select, ARRAY_A );
+
+			return isset( $post_exists['ID'] ) ? (int) $post_exists['ID'] : 0;
+		}
+
+		/**
 		 * Create new posts based on import information
 		 *
 		 * Posts marked as having a parent which doesn't exist will become top level items.
@@ -671,7 +687,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$post_type_object = get_post_type_object( $post['post_type'] );
 
-				$post_exists = post_exists( $post['post_title'], '', $post['post_date'] );
+				$post_exists = $this->is_post_exists( $post );
 
 				/**
 				 * Filter ID of the existing post corresponding to post currently importing.
