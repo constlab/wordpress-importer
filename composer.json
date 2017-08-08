@@ -1,6 +1,6 @@
 {
   "name": "constlab/wordpress-importer",
-  "type": "wordpress-importer",
+  "type": "wordpress-plugin",
   "license": "GPLv2 or later",
   "authors": [
     {
